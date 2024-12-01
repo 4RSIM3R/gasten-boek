@@ -1,34 +1,5 @@
-const Ziggy = {
-    url: 'http://inertia.ts.test',
-    port: null,
-    defaults: {},
-    routes: {
-        'sanctum.csrf-cookie': { uri: 'sanctum/csrf-cookie', methods: ['GET', 'HEAD'] },
-        home: { uri: '/', methods: ['GET', 'HEAD'] },
-        about: { uri: 'about', methods: ['GET', 'HEAD'] },
-        dashboard: { uri: 'dashboard', methods: ['GET', 'HEAD'] },
-        'profile.edit': { uri: 'profile', methods: ['GET', 'HEAD'] },
-        'profile.update': { uri: 'profile', methods: ['PATCH'] },
-        'profile.destroy': { uri: 'profile', methods: ['DELETE'] },
-        register: { uri: 'register', methods: ['GET', 'HEAD'] },
-        login: { uri: 'login', methods: ['GET', 'HEAD'] },
-        'password.request': { uri: 'forgot-password', methods: ['GET', 'HEAD'] },
-        'password.email': { uri: 'forgot-password', methods: ['POST'] },
-        'password.reset': { uri: 'reset-password/{token}', methods: ['GET', 'HEAD'], parameters: ['token'] },
-        'password.store': { uri: 'reset-password', methods: ['POST'] },
-        'verification.notice': { uri: 'verify-email', methods: ['GET', 'HEAD'] },
-        'verification.verify': {
-            uri: 'verify-email/{id}/{hash}',
-            methods: ['GET', 'HEAD'],
-            parameters: ['id', 'hash']
-        },
-        'verification.send': { uri: 'email/verification-notification', methods: ['POST'] },
-        'password.confirm': { uri: 'confirm-password', methods: ['GET', 'HEAD'] },
-        'password.update': { uri: 'password', methods: ['PUT'] },
-        logout: { uri: 'logout', methods: ['POST'] }
-    }
-};
+const Ziggy = {"url":"http:\/\/localhost","port":null,"defaults":{},"routes":{"sanctum.csrf-cookie":{"uri":"sanctum\/csrf-cookie","methods":["GET","HEAD"]},"auth.login":{"uri":"auth\/login","methods":["GET","HEAD"]},"auth.attempt":{"uri":"auth\/login","methods":["POST"]},"auth.logout":{"uri":"auth\/logout","methods":["POST"]},"backoffice.master.categories.index":{"uri":"backoffice\/master\/categories","methods":["GET","HEAD"]},"backoffice.master.categories.create":{"uri":"backoffice\/master\/categories\/create","methods":["GET","HEAD"]},"backoffice.master.categories.store":{"uri":"backoffice\/master\/categories","methods":["POST"]},"backoffice.master.categories.show":{"uri":"backoffice\/master\/categories\/{id}\/show","methods":["GET","HEAD"],"parameters":["id"]},"backoffice.master.categories.update":{"uri":"backoffice\/master\/categories\/{id}\/update","methods":["PUT"],"parameters":["id"]},"backoffice.master.categories.destroy":{"uri":"backoffice\/master\/categories\/{id}\/delete","methods":["DELETE"],"parameters":["id"]},"backoffice.master.destinations.index":{"uri":"backoffice\/master\/destinations","methods":["GET","HEAD"]},"backoffice.master.destinations.create":{"uri":"backoffice\/master\/destinations\/create","methods":["GET","HEAD"]},"backoffice.master.destinations.store":{"uri":"backoffice\/master\/destinations","methods":["POST"]},"backoffice.master.destinations.show":{"uri":"backoffice\/master\/destinations\/{id}\/show","methods":["GET","HEAD"],"parameters":["id"]},"backoffice.master.destinations.update":{"uri":"backoffice\/master\/destinations\/{id}\/update","methods":["PUT"],"parameters":["id"]},"backoffice.master.destinations.destroy":{"uri":"backoffice\/master\/destinations\/{id}\/delete","methods":["DELETE"],"parameters":["id"]},"backoffice.master.needs.index":{"uri":"backoffice\/master\/needs","methods":["GET","HEAD"]},"backoffice.master.needs.create":{"uri":"backoffice\/master\/needs\/create","methods":["GET","HEAD"]},"backoffice.master.needs.store":{"uri":"backoffice\/master\/needs","methods":["POST"]},"backoffice.master.needs.show":{"uri":"backoffice\/master\/needs\/{id}\/show","methods":["GET","HEAD"],"parameters":["id"]},"backoffice.master.needs.update":{"uri":"backoffice\/master\/needs\/{id}\/update","methods":["PUT"],"parameters":["id"]},"backoffice.master.needs.destroy":{"uri":"backoffice\/master\/needs\/{id}\/delete","methods":["DELETE"],"parameters":["id"]},"backoffice.master.officials.index":{"uri":"backoffice\/master\/officials","methods":["GET","HEAD"]},"backoffice.master.officials.create":{"uri":"backoffice\/master\/officials\/create","methods":["GET","HEAD"]},"backoffice.master.officials.store":{"uri":"backoffice\/master\/officials","methods":["POST"]},"backoffice.master.officials.show":{"uri":"backoffice\/master\/officials\/{id}\/show","methods":["GET","HEAD"],"parameters":["id"]},"backoffice.master.officials.update":{"uri":"backoffice\/master\/officials\/{id}\/update","methods":["PUT"],"parameters":["id"]},"backoffice.master.officials.destroy":{"uri":"backoffice\/master\/officials\/{id}\/delete","methods":["DELETE"],"parameters":["id"]},"backoffice.master.questions.index":{"uri":"backoffice\/master\/questions","methods":["GET","HEAD"]},"backoffice.master.questions.create":{"uri":"backoffice\/master\/questions\/create","methods":["GET","HEAD"]},"backoffice.master.questions.store":{"uri":"backoffice\/master\/questions","methods":["POST"]},"backoffice.master.questions.show":{"uri":"backoffice\/master\/questions\/{id}\/show","methods":["GET","HEAD"],"parameters":["id"]},"backoffice.master.questions.update":{"uri":"backoffice\/master\/questions\/{id}\/update","methods":["PUT"],"parameters":["id"]},"backoffice.master.questions.destroy":{"uri":"backoffice\/master\/questions\/{id}\/delete","methods":["DELETE"],"parameters":["id"]},"backoffice.operational.analytic":{"uri":"backoffice\/operational\/analytic","methods":["GET","HEAD"]},"backoffice.operational.guests.index":{"uri":"backoffice\/operational\/guests","methods":["GET","HEAD"]},"backoffice.operational.guests.show":{"uri":"backoffice\/operational\/guests\/{id}\/show","methods":["GET","HEAD"],"parameters":["id"]}}};
 if (typeof window !== 'undefined' && typeof window.Ziggy !== 'undefined') {
-    Object.assign(Ziggy.routes, window.Ziggy.routes);
+  Object.assign(Ziggy.routes, window.Ziggy.routes);
 }
 export { Ziggy };
