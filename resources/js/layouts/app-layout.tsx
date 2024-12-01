@@ -18,16 +18,16 @@ export function AppLayout({ children }: PropsWithChildren) {
                 </Sidebar.Header>
                 <Sidebar.Content  >
                     <Sidebar.Section collapsible title="Master Data" className="text-black" >
-                        <Sidebar.Item icon={IconDatabase} href="#">
+                        <Sidebar.Item icon={IconDatabase} href={route('backend.master.categories.index')}>
                             Kategori
                         </Sidebar.Item>
-                        <Sidebar.Item icon={IconDatabase} href="#">
+                        <Sidebar.Item icon={IconDatabase} href={route('backend.master.destinations.index')}>
                             Tujuan
                         </Sidebar.Item>
-                        <Sidebar.Item icon={IconDatabase} href="#">
+                        <Sidebar.Item icon={IconDatabase} href={route('backend.master.officials.index')}>
                             Perangkat Daerah
                         </Sidebar.Item>
-                        <Sidebar.Item icon={IconDatabase} href="#">
+                        <Sidebar.Item icon={IconDatabase} href={route('backend.master.questions.index')}>
                             Kuisioner
                         </Sidebar.Item>
                     </Sidebar.Section>

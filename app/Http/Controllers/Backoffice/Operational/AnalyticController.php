@@ -6,4 +6,6 @@ use App\Http\Controllers\Controller;
 
 class AnalyticController extends Controller {
 
+    public function index() {}
+
 }
