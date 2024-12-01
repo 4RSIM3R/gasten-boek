@@ -1,7 +1,5 @@
 <?php
 
-use App\Models\Guest;
-use App\Models\Questionare;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,11 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('questionare_answers', function (Blueprint $table) {
+        Schema::create('officials', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Guest::class)->constrained()->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignIdFor(Questionare::class)->constrained()->cascadeOnDelete()->cascadeOnUpdate();
-            $table->text('answer');
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -27,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('questionare_answers');
+        Schema::dropIfExists('officials');
     }
 };
