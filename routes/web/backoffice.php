@@ -7,9 +7,12 @@ use App\Http\Controllers\Backoffice\Master\OfficialController;
 use App\Http\Controllers\Backoffice\Master\QuestionareController;
 use App\Http\Controllers\Backoffice\Operational\AnalyticController;
 use App\Http\Controllers\Backoffice\Operational\GuestController;
+use App\Http\Controllers\BackofficeController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'backoffice', 'as' => 'backoffice.'], function () {
+
+    Route::get('', [BackofficeController::class, 'index'])->name('index');
 
     Route::group(['prefix' => 'master', 'as' => 'master.'], function () {
 
