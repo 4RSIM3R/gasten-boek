@@ -1,10 +1,12 @@
 import { Button } from "@/components/ui";
 import { AppLayout } from "@/layouts/app-layout";
+import { Base } from "@/types/base";
+import { Destination } from "@/types/destination";
 import { Link } from "@inertiajs/react";
 import { IconPlus } from "justd-icons";
 
 type DestinationIndexProps = {
-    response: any;
+    response: Base<Destination[]>;
 };
 
 export default function DestinationIndex({ response }: DestinationIndexProps) {

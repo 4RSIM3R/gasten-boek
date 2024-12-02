@@ -1,10 +1,12 @@
 import { Button } from "@/components/ui";
 import { AppLayout } from "@/layouts/app-layout";
+import { Base } from "@/types/base";
+import { Need } from "@/types/need";
 import { Link } from "@inertiajs/react";
 import { IconPlus } from "justd-icons";
 
 type NeedIndexProps = {
-    response: any;
+    response: Base<Need[]>;
 };
 
 export default function NeedIndex({ response }: NeedIndexProps) {

@@ -1,10 +1,12 @@
 import { Button } from "@/components/ui";
 import { AppLayout } from "@/layouts/app-layout";
+import { Base } from "@/types/base";
+import { Questionare } from "@/types/questionare";
 import { Link } from "@inertiajs/react";
 import { IconPlus } from "justd-icons";
 
 type QuestionareIndexProps = {
-    response: any;
+    response: Base<Questionare[]>;
 };
 
 export default function QuestionareIndex({ response }: QuestionareIndexProps) {
