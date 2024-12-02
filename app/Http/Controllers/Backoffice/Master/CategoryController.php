@@ -25,7 +25,7 @@ class CategoryController extends Controller
             "next_page" => $categories->hasMorePages() ? $categories->currentPage() + 1 : null,
         ];
 
-        return Inertia::render('backoffice/question/index', [
+        return Inertia::render('backoffice/master/category/index', [
             'response' => $response,
         ]);
     }
