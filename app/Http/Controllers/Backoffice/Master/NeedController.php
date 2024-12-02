@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Backoffice\Master;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\NeedRequest;
 use App\Models\Need;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 
 class NeedController extends Controller
@@ -36,11 +38,47 @@ class NeedController extends Controller
 
     public function store(NeedRequest $request)
     {
-
         $payload = $request->validated();
+
+        try {
+            DB::beginTransaction();
+            Need::query()->create($payload);
+            DB::commit();
+
+            return Inertia::location(route('backoffice.master.needs.index'));
+        } catch (Exception $e) {
+            DB::rollBack();
+            return back()->withErrors('errors', $e->getMessage());
+        }
     }
 
-    public function update($id, NeedRequest $request) {}
+    public function update($id, NeedRequest $request)
+    {
+        $payload = $request->validated();
 
-    public function destroy($id) {}
+        try {
+            DB::beginTransaction();
+            Need::query()->where('id', $id)->update($payload);
+            DB::commit();
+
+            return Inertia::location(route('backoffice.master.needs.index'));
+        } catch (Exception $e) {
+            DB::rollBack();
+            return back()->withErrors('errors', $e->getMessage());
+        }
+    }
+
+    public function destroy($id)
+    {
+        try {
+            DB::beginTransaction();
+            Need::query()->where('id', $id)->delete();
+            DB::commit();
+
+            return Inertia::location(route('backoffice.master.needs.index'));
+        } catch (Exception $e) {
+            DB::rollBack();
+            return back()->withErrors('errors', $e->getMessage());
+        }
+    }
 }

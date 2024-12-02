@@ -5,13 +5,13 @@ import { Category } from "@/types/category";
 import { useForm } from "@inertiajs/react";
 
 type CategoryFormProps = {
-    category: any;
+    category?: any;
 };
 
 export default function CategoryForm({ category }: CategoryFormProps) {
 
     const { data, setData, post, put, errors } = useForm<Category>({
-        name: category.name,
+        name: category?.name,
     } satisfies Category);
 
     const onSubmit = (e: { preventDefault: () => void; }) => {

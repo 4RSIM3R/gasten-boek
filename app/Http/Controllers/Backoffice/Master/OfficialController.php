@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Backoffice\Master;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\OfficialRequest;
 use App\Models\Official;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 
 class OfficialController extends Controller
@@ -37,9 +39,47 @@ class OfficialController extends Controller
     public function store(OfficialRequest $request)
     {
         $payload = $request->validated();
+
+        try {
+            DB::beginTransaction();
+            Official::query()->create($payload);
+            DB::commit();
+
+            return Inertia::location(route('backoffice.master.officials.index'));
+        } catch (Exception $e) {
+            DB::rollBack();
+            return back()->withErrors('errors', $e->getMessage());
+        }
     }
 
-    public function update($id, OfficialRequest $request) {}
+    public function update($id, OfficialRequest $request)
+    {
 
-    public function destroy($id) {}
+        $payload = $request->validated();
+
+        try {
+            DB::beginTransaction();
+            Official::query()->where('id', $id)->update($payload);
+            DB::commit();
+
+            return Inertia::location(route('backoffice.master.officials.index'));
+        } catch (Exception $e) {
+            DB::rollBack();
+            return back()->withErrors('errors', $e->getMessage());
+        }
+    }
+
+    public function destroy($id)
+    {
+        try {
+            DB::beginTransaction();
+            Official::query()->where('id', $id)->delete();
+            DB::commit();
+
+            return Inertia::location(route('backoffice.master.officials.index'));
+        } catch (Exception $e) {
+            DB::rollBack();
+            return back()->withErrors('errors', $e->getMessage());
+        }
+    }
 }

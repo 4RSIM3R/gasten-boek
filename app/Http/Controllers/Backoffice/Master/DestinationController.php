@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Backoffice\Master;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DestinationRequest;
 use App\Models\Destination;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 
 class DestinationController extends Controller
@@ -38,9 +40,47 @@ class DestinationController extends Controller
     public function store(DestinationRequest $request)
     {
         $payload = $request->validated();
+
+        try {
+            DB::beginTransaction();
+            Destination::query()->create($payload);
+            DB::commit();
+
+            return Inertia::location(route('backoffice.master.destinations.index'));
+        } catch (Exception $e) {
+            DB::rollBack();
+            return back()->withErrors('errors', $e->getMessage());
+        }
     }
 
-    public function update($id, DestinationRequest $request) {}
+    public function update($id, DestinationRequest $request)
+    {
 
-    public function destroy($id) {}
+        $payload = $request->validated();
+
+        try {
+            DB::beginTransaction();
+            Destination::query()->where('id', $id)->update($payload);
+            DB::commit();
+
+            return Inertia::location(route('backoffice.master.destinations.index'));
+        } catch (Exception $e) {
+            DB::rollBack();
+            return back()->withErrors('errors', $e->getMessage());
+        }
+    }
+
+    public function destroy($id)
+    {
+        try {
+            DB::beginTransaction();
+            Destination::query()->where('id', $id)->delete();
+            DB::commit();
+
+            return Inertia::location(route('backoffice.master.destinations.index'));
+        } catch (Exception $e) {
+            DB::rollBack();
+            return back()->withErrors('errors', $e->getMessage());
+        }
+    }
 }

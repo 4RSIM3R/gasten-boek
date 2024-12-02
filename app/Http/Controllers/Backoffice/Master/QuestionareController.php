@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Backoffice\Master;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\QuestionareRequest;
 use App\Models\Questionare;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 
 class QuestionareController extends Controller
@@ -34,9 +36,49 @@ class QuestionareController extends Controller
         return Inertia::render('backoffice/master/questionare/form');
     }
 
-    public function store(QuestionareRequest $request) {}
+    public function store(QuestionareRequest $request)
+    {
+        $payload = $request->validated();
 
-    public function update($id, QuestionareRequest $request) {}
+        try {
+            DB::beginTransaction();
+            Questionare::query()->create($payload);
+            DB::commit();
 
-    public function destroy($id) {}
+            return Inertia::location(route('backoffice.master.questionares.index'));
+        } catch (Exception $e) {
+            DB::rollBack();
+            return back()->withErrors('errors', $e->getMessage());
+        }
+    }
+
+    public function update($id, QuestionareRequest $request)
+    {
+        $payload = $request->validated();
+
+        try {
+            DB::beginTransaction();
+            Questionare::query()->where('id', $id)->update($payload);
+            DB::commit();
+
+            return Inertia::location(route('backoffice.master.questionares.index'));
+        } catch (Exception $e) {
+            DB::rollBack();
+            return back()->withErrors('errors', $e->getMessage());
+        }
+    }
+
+    public function destroy($id)
+    {
+        try {
+            DB::beginTransaction();
+            Questionare::query()->where('id', $id)->delete();
+            DB::commit();
+
+            return Inertia::location(route('backoffice.master.questionares.index'));
+        } catch (Exception $e) {
+            DB::rollBack();
+            return back()->withErrors('errors', $e->getMessage());
+        }
+    }
 }

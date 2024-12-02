@@ -1,6 +1,11 @@
 import { AppLayout } from "@/layouts/app-layout";
+import { Need } from "@/types/need";
 
-export default function NeedForm() {
+type NeedFormProps = {
+    need?: Need;
+};
+
+export default function NeedForm({need}: NeedFormProps) {
     return (
         <div>
             <h1>Need Form</h1>
