@@ -8,7 +8,12 @@ type NeedFormProps = {
 export default function NeedForm({need}: NeedFormProps) {
     return (
         <div>
-            <h1>Need Form</h1>
+             <div className="flex flex-row justify-between" >
+                <div className="" >
+                    <h1 className="text-xl font-semibold" >Keperluan</h1>
+                    <p className="text-sm text-gray-500" >Form keperluan tamu</p>
+                </div>
+            </div>
         </div>
     );
 }

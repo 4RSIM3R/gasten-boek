@@ -71,7 +71,6 @@ export default function Login() {
                             name="password"
                             value={data.password}
                             autoComplete="one-time-code"
-                            autoFocus
                             onChange={(v) => setData("password", v)}
                             errorMessage={errors.password}
                             isRequired

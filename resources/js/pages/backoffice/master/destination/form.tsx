@@ -17,7 +17,7 @@ export default function DestinationForm({ destination }: DestinationFormProps) {
     const onSubmit = (e: { preventDefault: () => void; }) => {
         e.preventDefault();
 
-        if (module) {
+        if (destination) {
             put(route('backoffice.master.destinations.update', { id: module?.id }), {
                 onSuccess: (_) => { },
                 onError: (error) => showError(error),
@@ -46,6 +46,7 @@ export default function DestinationForm({ destination }: DestinationFormProps) {
                     value={data.name}
                     onChange={(value) => setData('name', value)}
                     errorMessage={errors.name}
+                    className="col-span-12"
                 />
                 <div className="col-span-12" >
                     <Button type="submit" >
