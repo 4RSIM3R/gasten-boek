@@ -17,8 +17,8 @@ export default function CategoryForm({ category }: CategoryFormProps) {
     const onSubmit = (e: { preventDefault: () => void; }) => {
         e.preventDefault();
 
-        if (module) {
-            put(route('backoffice.master.categories.update', { id: module?.id }), {
+        if (category) {
+            put(route('backoffice.master.categories.update', { id: category?.id }), {
                 onSuccess: (_) => { },
                 onError: (error) => showError(error),
             });
@@ -43,9 +43,11 @@ export default function CategoryForm({ category }: CategoryFormProps) {
                     label="Nama"
                     placeholder="Nama Kategori"
                     name="name"
+                    autoComplete="one-time-code"
                     value={data.name}
                     onChange={(value) => setData('name', value)}
                     errorMessage={errors.name}
+                    className="col-span-12"
                 />
                 <div className="col-span-12" >
                     <Button type="submit" >

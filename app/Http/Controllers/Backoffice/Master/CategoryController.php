@@ -34,7 +34,7 @@ class CategoryController extends Controller
 
     public function create()
     {
-        return Inertia::render('backoffice/question/form');
+        return Inertia::render('backoffice/master/category/form');
     }
 
     public function store(CategoryRequest $request)
