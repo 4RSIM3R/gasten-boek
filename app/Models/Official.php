@@ -9,4 +9,6 @@ class Official extends Model
 {
     /** @use HasFactory<\Database\Factories\OfficialFactory> */
     use HasFactory;
+
+    protected $guarded = [];
 }

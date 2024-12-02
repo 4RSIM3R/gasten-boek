@@ -1,9 +1,29 @@
+import { Button } from "@/components/ui";
 import { AppLayout } from "@/layouts/app-layout";
+import { Link } from "@inertiajs/react";
+import { IconPlus } from "justd-icons";
 
-export default function NeedIndex() {
+type NeedIndexProps = {
+    response: any;
+};
+
+export default function NeedIndex({ response }: NeedIndexProps) {
     return (
         <div>
-            <h1>Need</h1>
+            <div className="flex flex-row justify-between" >
+                <div className="" >
+                    <h1 className="text-xl font-semibold" >Keperluan</h1>
+                    <p className="text-sm text-gray-500" >Manajemen keperluan bertamu</p>
+                </div>
+                <div>
+                    <Link href={route('backoffice.master.needs.create')} >
+                        <Button appearance="outline" >
+                            <IconPlus />
+                            Add New
+                        </Button>
+                    </Link>
+                </div>
+            </div>
         </div>
     );
 }

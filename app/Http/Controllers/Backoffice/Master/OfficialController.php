@@ -3,17 +3,43 @@
 namespace App\Http\Controllers\Backoffice\Master;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\OfficialRequest;
+use App\Models\Official;
+use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class OfficialController extends Controller
 {
 
-    public function index() {}
+    public function index(Request $request)
+    {
+        $page = $request->get('page', 1);
+        $perPage = $request->get('per_page', 10);
 
-    public function create() {}
+        $officials = Official::query()->paginate(perPage: $perPage, page: $page);
 
-    public function store() {}
+        $response = [
+            "prev_page" => $officials->currentPage() > 1 ? $officials->currentPage() - 1 : null,
+            "items" => $officials->items(),
+            "next_page" => $officials->hasMorePages() ? $officials->currentPage() + 1 : null,
+        ];
 
-    public function update() {}
+        return Inertia::render('backoffice/master/official/index', [
+            'response' => $response,
+        ]);
+    }
 
-    public function destroy() {}
+    public function create()
+    {
+        return Inertia::render('backoffice/master/official/form');
+    }
+
+    public function store(OfficialRequest $request)
+    {
+        $payload = $request->validated();
+    }
+
+    public function update($id, OfficialRequest $request) {}
+
+    public function destroy($id) {}
 }

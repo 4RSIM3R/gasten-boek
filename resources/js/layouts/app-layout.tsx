@@ -45,10 +45,9 @@ export function AppLayout({ children }: PropsWithChildren) {
             </Sidebar>
             <Sidebar.Inset>
                 <Toaster />
-                <header className="sticky justify-between sm:justify-start top-0 bg-bg h-[3.57rem] px-4 border-b flex items-center gap-x-2">
+                <header className="sticky justify-between sm:justify-start top-0 bg-bg h-[4rem] px-4 border-b flex items-center gap-x-2">
                     <span className="flex items-center gap-x-3">
                         <Sidebar.Trigger className="-mx-2" />
-                        <Separator className="h-6 sm:block hidden" orientation="vertical" />
                     </span>
                     <div className="flex sm:hidden items-center gap-x-2">
                         <Button appearance="plain" aria-label="Search..." size="square-petite">

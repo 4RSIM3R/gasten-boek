@@ -25,14 +25,14 @@ class DestinationController extends Controller
             "next_page" => $destinations->hasMorePages() ? $destinations->currentPage() + 1 : null,
         ];
 
-        return Inertia::render('backoffice/question/index', [
+        return Inertia::render('backoffice/master/destination/index', [
             'response' => $response,
         ]);
     }
 
     public function create()
     {
-        return Inertia::render('backoffice/question/form');
+        return Inertia::render('backoffice/master/destination/form');
     }
 
     public function store(DestinationRequest $request)

@@ -24,14 +24,14 @@ class NeedController extends Controller
             "next_page" => $needs->hasMorePages() ? $needs->currentPage() + 1 : null,
         ];
 
-        return Inertia::render('backoffice/question/index', [
+        return Inertia::render('backoffice/master/need/index', [
             'response' => $response,
         ]);
     }
 
     public function create()
     {
-        return Inertia::render('backoffice/question/form');
+        return Inertia::render('backoffice/master/need/form');
     }
 
     public function store(NeedRequest $request)

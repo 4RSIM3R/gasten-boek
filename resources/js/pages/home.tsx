@@ -1,8 +1,8 @@
 
 export default function Home() {
     return (
-        <>
-           Hello
-        </>
+        <div className="grid grid-cols-12 gap-4" >
+
+        </div>
     );
 }

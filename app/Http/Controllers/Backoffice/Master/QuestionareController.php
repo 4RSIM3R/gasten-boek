@@ -24,14 +24,14 @@ class QuestionareController extends Controller
             "next_page" => $questions->hasMorePages() ? $questions->currentPage() + 1 : null,
         ];
 
-        return Inertia::render('backoffice/question/index', [
+        return Inertia::render('backoffice/master/questionare/index', [
             'response' => $response,
         ]);
     }
 
     public function create()
     {
-        return Inertia::render('backoffice/question/form');
+        return Inertia::render('backoffice/master/questionare/form');
     }
 
     public function store(QuestionareRequest $request) {}
