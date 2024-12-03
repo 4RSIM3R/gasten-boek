@@ -42,12 +42,12 @@ export default function DestinationIndex({ response }: DestinationIndexProps) {
                                             <Table.Cell>{module.id}</Table.Cell>
                                             <Table.Cell>{module.name}</Table.Cell>
                                             <Table.Cell className="flex space-x-2" >
-                                                <Link href={route('backoffice.master.destionations.show', { id: module.id })}>
+                                                <Link href={route('backoffice.master.destinations.show', { id: module.id })}>
                                                     <Button appearance="outline" size="extra-small">
                                                         <IconEye />
                                                     </Button>
                                                 </Link>
-                                                <Form method="post" action={route('backoffice.master.destinations.delete', { id: module.id })}>
+                                                <Form method="post" action={route('backoffice.master.destinations.destroy', { id: module.id })}>
                                                     <input type="hidden" name="_method" value="DELETE" />
                                                     <Button className="" appearance="outline" size="extra-small">
                                                         <IconTrash className="fill-red-500" />
@@ -61,8 +61,8 @@ export default function DestinationIndex({ response }: DestinationIndexProps) {
                         </Table>
                         <Pagination>
                             <Pagination.List>
-                                <Pagination.Item variant="previous" href={route('backoffice.master.destionations.index', { page: response.prev_page })} />
-                                <Pagination.Item variant="next" href={route('backoffice.master.destionations.index', { page: response.next_page })} />
+                                <Pagination.Item variant="previous" href={route('backoffice.master.destinations.index', { page: response.prev_page })} />
+                                <Pagination.Item variant="next" href={route('backoffice.master.destinations.index', { page: response.next_page })} />
                             </Pagination.List>
                         </Pagination>
                     </>

@@ -10,7 +10,7 @@ type DestinationFormProps = {
 
 export default function DestinationForm({ destination }: DestinationFormProps) {
 
-    const { data, setData, post, put, errors } = useForm<Destination>({
+    const { data, setData, post, put, errors, processing } = useForm<Destination>({
         name: destination?.name,
     } satisfies Destination);
 
@@ -49,7 +49,7 @@ export default function DestinationForm({ destination }: DestinationFormProps) {
                     className="col-span-12"
                 />
                 <div className="col-span-12" >
-                    <Button type="submit" >
+                    <Button isDisabled={processing} type="submit" >
                         Submit
                     </Button>
                 </div>
