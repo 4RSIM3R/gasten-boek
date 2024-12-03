@@ -1,4 +1,4 @@
 export type Official = {
-    id: number,
-    name: string,
+    id?: number,
+    name?: string,
 }
