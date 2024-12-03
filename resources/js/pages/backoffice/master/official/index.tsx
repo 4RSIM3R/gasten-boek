@@ -14,8 +14,8 @@ export default function OfficialIndex({ response }: OfficialIndexProps) {
         <div>
             <div className="flex flex-row justify-between" >
                 <div className="" >
-                    <h1 className="text-xl font-semibold" >Keperluan</h1>
-                    <p className="text-sm text-gray-500" >Manajemen keperluan bertamu</p>
+                    <h1 className="text-xl font-semibold" >Perangkat Daerah</h1>
+                    <p className="text-sm text-gray-500" >Manajemen perangkat daerah</p>
                 </div>
                 <div>
                     <Link href={route('backoffice.master.officials.create')}>
@@ -47,7 +47,7 @@ export default function OfficialIndex({ response }: OfficialIndexProps) {
                                                         <IconEye />
                                                     </Button>
                                                 </Link>
-                                                <Form method="post" action={route('backoffice.master.officials.delete', { id: module.id })}>
+                                                <Form method="post" action={route('backoffice.master.officials.destroy', { id: module.id })}>
                                                     <input type="hidden" name="_method" value="DELETE" />
                                                     <Button className="" appearance="outline" size="extra-small">
                                                         <IconTrash className="fill-red-500" />

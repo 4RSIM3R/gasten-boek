@@ -16,7 +16,7 @@ export function AppLayout({ children }: PropsWithChildren) {
                         <strong className="font-medium group-data-[collapsible=dock]:hidden">Gastenboek</strong>
                     </Link>
                 </Sidebar.Header>
-                <Sidebar.Content  >
+                <Sidebar.Content>
                     <Sidebar.Section collapsible title="Master Data" className="text-black" >
                         <Sidebar.Item icon={IconDatabase} href={route('backoffice.master.categories.index')}>
                             Kategori
@@ -29,6 +29,14 @@ export function AppLayout({ children }: PropsWithChildren) {
                         </Sidebar.Item>
                         <Sidebar.Item icon={IconDatabase} href={route('backoffice.master.questions.index')}>
                             Kuisioner
+                        </Sidebar.Item>
+                    </Sidebar.Section>
+                    <Sidebar.Section collapsible title="Operasional" className="text-black" >
+                        <Sidebar.Item icon={IconDatabase} href={route('backoffice.operational.analytic')}>
+                            Analitik
+                        </Sidebar.Item>
+                        <Sidebar.Item icon={IconDatabase} href={route('backoffice.operational.guests.index')}>
+                            Tamu
                         </Sidebar.Item>
                     </Sidebar.Section>
                 </Sidebar.Content>

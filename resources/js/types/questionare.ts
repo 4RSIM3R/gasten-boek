@@ -1,4 +1,4 @@
 export type Questionare = {
-    id: number,
-    question: string,
+    id?: number,
+    question?: string,
 }

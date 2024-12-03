@@ -45,7 +45,7 @@ class QuestionareController extends Controller
             Questionare::query()->create($payload);
             DB::commit();
 
-            return Inertia::location(route('backoffice.master.questionares.index'));
+            return Inertia::location(route('backoffice.master.questions.index'));
         } catch (Exception $e) {
             DB::rollBack();
             return back()->withErrors('errors', $e->getMessage());
@@ -61,7 +61,7 @@ class QuestionareController extends Controller
             Questionare::query()->where('id', $id)->update($payload);
             DB::commit();
 
-            return Inertia::location(route('backoffice.master.questionares.index'));
+            return Inertia::location(route('backoffice.master.questions.index'));
         } catch (Exception $e) {
             DB::rollBack();
             return back()->withErrors('errors', $e->getMessage());
@@ -75,7 +75,7 @@ class QuestionareController extends Controller
             Questionare::query()->where('id', $id)->delete();
             DB::commit();
 
-            return Inertia::location(route('backoffice.master.questionares.index'));
+            return Inertia::location(route('backoffice.master.questions.index'));
         } catch (Exception $e) {
             DB::rollBack();
             return back()->withErrors('errors', $e->getMessage());
