@@ -2,12 +2,6 @@
 
 A simple Gastenboek application built with [Inertia.js](https://inertiajs.com) and [Tailwind CSS](https://tailwindcss.com).
 
-## Requirements
-
-- PHP 8.0+
-- Composer 2
-- Node.js 14+
-
 ## Installation
 
 1. Install dependencies with `composer install`
