@@ -47,7 +47,7 @@ export default function NeedIndex({ response }: NeedIndexProps) {
                                                         <IconEye />
                                                     </Button>
                                                 </Link>
-                                                <Form method="post" action={route('backoffice.master.needs.delete', { id: module.id })}>
+                                                <Form method="post" action={route('backoffice.master.needs.destroy', { id: module.id })}>
                                                     <input type="hidden" name="_method" value="DELETE" />
                                                     <Button className="" appearance="outline" size="extra-small">
                                                         <IconTrash className="fill-red-500" />

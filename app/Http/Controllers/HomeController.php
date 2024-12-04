@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RecordGuestRequest;
 use App\Models\Category;
 use App\Models\Destination;
+use App\Models\Guest;
 use App\Models\Need;
 use App\Models\Official;
+use App\Models\Questionare;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 
 class HomeController extends Controller
@@ -27,9 +31,30 @@ class HomeController extends Controller
         ]);
     }
 
+    public function record_guest(RecordGuestRequest $request)
+    {
+        $payload = $request->validated();
+
+        try {
+            DB::beginTransaction();
+            $guest = Guest::query()->create($payload);
+            DB::commit();
+            return redirect()->route('questionare', ['id' => $guest->id]);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->withErrors('errors', $e->getMessage());
+        }
+    }
+
     public function questionare($id)
     {
-        return Inertia::render('questionare');
+        $questions = Questionare::query()->get(['id', 'question']);
+        $guest = Guest::query()->where('id', $id)->first();
+
+        return Inertia::render('questionare', [
+            "questions" => $questions,
+            "guest" => $guest,
+        ]);
     }
 
     public function answer($id) {}

@@ -4,6 +4,7 @@ import { Destination } from "@/types/destination";
 import { Need } from "@/types/need";
 import { Official } from "@/types/official";
 import { useForm } from "@inertiajs/react";
+import { toast, Toaster } from "sonner";
 
 type HomeProps = {
     category: Category[],
@@ -31,10 +32,23 @@ export default function Home({ category, official, need, destination }: HomeProp
 
     const onSubmit = (e: { preventDefault: () => void; }) => {
         e.preventDefault();
+
+        post(route('record_guest'), {
+            onSuccess: (_) => {
+
+            },
+            onError: (error) => {
+                toast("Whoopsss....", {
+                    description: Object.keys(error)[0],
+                });
+            }
+        });
+
     }
 
     return (
         <div className="max-w-5xl mx-auto p-8" >
+            <Toaster />
             <h1 className="text-xl font-semibold text-center" >Buku Tamu</h1>
             <p className="text-center text-sm text-gray-400" >Deskripsi disini</p>
             <form onSubmit={onSubmit} className="grid grid-cols-12 gap-4 my-4" >

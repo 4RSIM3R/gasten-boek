@@ -24,6 +24,9 @@ export function AppLayout({ children }: PropsWithChildren) {
                         <Sidebar.Item icon={IconDatabase} href={route('backoffice.master.destinations.index')}>
                             Tujuan
                         </Sidebar.Item>
+                        <Sidebar.Item icon={IconDatabase} href={route('backoffice.master.needs.index')}>
+                            Keperluan
+                        </Sidebar.Item>
                         <Sidebar.Item icon={IconDatabase} href={route('backoffice.master.officials.index')}>
                             Perangkat Daerah
                         </Sidebar.Item>
